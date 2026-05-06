@@ -57,14 +57,17 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-white text-ink-900 antialiased dark:bg-ink-900 dark:text-ink-50">
         <header className="sticky top-0 z-30 border-b border-ink-100 bg-white/80 backdrop-blur dark:border-ink-800 dark:bg-ink-900/80">
-          <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
-            <Link href="/" className="flex items-center gap-2 font-bold">
+          <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-3 sm:px-4">
+            <Link
+              href="/"
+              className="flex shrink-0 items-center gap-2 font-bold"
+            >
               <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-ink-900 text-white dark:bg-white dark:text-ink-900">
                 N
               </span>
-              <span>Next.js 부트캠프</span>
+              <span className="hidden sm:inline">Next.js 부트캠프</span>
             </Link>
-            <nav className="flex items-center gap-5 text-sm">
+            <nav className="flex items-center gap-3 text-[13px] sm:gap-5 sm:text-sm">
               <Link
                 href="/"
                 className="hover:text-brand-600 dark:hover:text-brand-400"
@@ -87,7 +90,7 @@ export default function RootLayout({
                 href="https://nextjs.org/docs"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-brand-600 dark:hover:text-brand-400"
+                className="hidden hover:text-brand-600 sm:inline dark:hover:text-brand-400"
               >
                 공식 문서 ↗
               </a>
