@@ -37,37 +37,37 @@ export default function AboutPage() {
           <table className="w-full text-[14px]">
             <thead className="bg-ink-50 dark:bg-ink-800">
               <tr>
-                <th className="px-3 py-2 text-left font-semibold dark:text-ink-100">
+                <th className="whitespace-nowrap px-3 py-2 text-left font-semibold dark:text-ink-100">
                   요일
                 </th>
                 <th className="px-3 py-2 text-left font-semibold dark:text-ink-100">
                   활동
                 </th>
-                <th className="px-3 py-2 text-left font-semibold dark:text-ink-100">
+                <th className="whitespace-nowrap px-3 py-2 text-left font-semibold dark:text-ink-100">
                   시간
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-ink-100 dark:divide-ink-800 dark:text-ink-200">
               <tr>
-                <td className="px-3 py-2">월</td>
+                <td className="whitespace-nowrap px-3 py-2">월</td>
                 <td className="px-3 py-2">강의자료 정독 + 공식 문서 1회 통독</td>
-                <td className="px-3 py-2">90분</td>
+                <td className="whitespace-nowrap px-3 py-2">90분</td>
               </tr>
               <tr>
-                <td className="px-3 py-2">수</td>
+                <td className="whitespace-nowrap px-3 py-2">수</td>
                 <td className="px-3 py-2">코드 예제 따라 치고 변형해 보기</td>
-                <td className="px-3 py-2">90분</td>
+                <td className="whitespace-nowrap px-3 py-2">90분</td>
               </tr>
               <tr>
-                <td className="px-3 py-2">금</td>
+                <td className="whitespace-nowrap px-3 py-2">금</td>
                 <td className="px-3 py-2">과제 풀이 → 깃 커밋/PR</td>
-                <td className="px-3 py-2">120분</td>
+                <td className="whitespace-nowrap px-3 py-2">120분</td>
               </tr>
               <tr>
-                <td className="px-3 py-2">일</td>
+                <td className="whitespace-nowrap px-3 py-2">일</td>
                 <td className="px-3 py-2">짧은 회고 노트 1쪽</td>
-                <td className="px-3 py-2">30분</td>
+                <td className="whitespace-nowrap px-3 py-2">30분</td>
               </tr>
             </tbody>
           </table>

@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <div className="space-y-12">
       {/* Hero */}
-      <section className="rounded-2xl border border-ink-100 bg-gradient-to-br from-brand-50 via-white to-emerald-50 p-8 md:p-12 dark:border-ink-800 dark:from-brand-900/30 dark:via-ink-900 dark:to-emerald-900/20">
+      <section className="rounded-2xl border border-ink-100 bg-gradient-to-br from-brand-50 via-white to-emerald-50 p-6 sm:p-8 md:p-12 dark:border-ink-800 dark:from-brand-900/30 dark:via-ink-900 dark:to-emerald-900/20">
         <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-ink-900 px-3 py-1 text-xs font-mono text-white dark:bg-ink-700">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
           App Router · React 19 · Next.js 15
