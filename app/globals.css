@@ -49,14 +49,38 @@ body {
 }
 .code-block__body pre,
 .code-block__body .shiki {
-  @apply m-0 p-4 text-[13px] leading-6;
+  @apply m-0 py-4 text-[13px] leading-6;
+  padding-left: 0;
+  padding-right: 1rem;
   background: #ffffff !important;
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+  font-family: var(--font-code), "D2Coding", "Nanum Gothic Coding",
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
     "Liberation Mono", monospace;
 }
 .code-block__body code,
 .code-block__body .shiki span {
   background: transparent !important;
+}
+
+/* 라인 번호 (GitHub 스타일 gutter) */
+.code-block__body .shiki code {
+  counter-reset: shiki-line;
+  display: block;
+}
+.code-block__body .shiki .line {
+  counter-increment: shiki-line;
+}
+.code-block__body .shiki .line::before {
+  content: counter(shiki-line);
+  display: inline-block;
+  width: 2.5rem;
+  padding-right: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: #afb8c1;
+  border-right: 1px solid #eaeef2;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* 복사 버튼 */

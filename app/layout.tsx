@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import { Nanum_Gothic_Coding } from "next/font/google";
+
+const codeFont = Nanum_Gothic_Coding({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-code",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nextjs-bootcamp.vercel.app"),
@@ -38,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
+    <html lang="ko" className={codeFont.variable}>
       <body className="min-h-screen bg-white text-ink-900 antialiased">
         <header className="sticky top-0 z-30 border-b border-ink-100 bg-white/80 backdrop-blur">
           <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
