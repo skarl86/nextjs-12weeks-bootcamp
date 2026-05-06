@@ -7,8 +7,7 @@ export async function CodeBlock({ block }: { block: CodeBlockType }) {
   const highlighter = await getHighlighter();
   const html = highlighter.codeToHtml(block.code, {
     lang,
-    themes: { light: "github-light", dark: "github-dark" },
-    defaultColor: false,
+    theme: "github-light",
   });
 
   const displayLang = block.lang || "text";

@@ -7,13 +7,6 @@
   --foreground: #0f172a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0d14;
-    --foreground: #e6e8ef;
-  }
-}
-
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
@@ -57,7 +50,7 @@ body {
 .code-block__body pre,
 .code-block__body .shiki {
   @apply m-0 p-4 text-[13px] leading-6;
-  background: var(--shiki-light-bg, #ffffff) !important;
+  background: #ffffff !important;
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
     "Liberation Mono", monospace;
 }
@@ -79,47 +72,6 @@ body {
   color: #1a7f37;
 }
 
-/* shiki dual-theme: prefers-color-scheme 기반으로 다크 색상 전환 */
-@media (prefers-color-scheme: dark) {
-  .code-block {
-    border-color: #3d444d;
-    background: #0d1117;
-  }
-  .code-block__head {
-    border-color: #3d444d;
-    background: #151b23;
-    color: #9198a1;
-  }
-  .code-block__lang {
-    background: #262c36;
-    color: #9198a1;
-  }
-  .code-block__filename {
-    color: #f0f6fc;
-  }
-  .code-block__body pre,
-  .code-block__body .shiki {
-    background: var(--shiki-dark-bg, #0d1117) !important;
-  }
-  .code-copy-btn {
-    color: #9198a1;
-  }
-  .code-copy-btn:hover {
-    background: #262c36;
-    color: #f0f6fc;
-  }
-  .code-copy-btn[data-copied] {
-    color: #3fb950;
-  }
-  .shiki,
-  .shiki span {
-    color: var(--shiki-dark) !important;
-    font-style: var(--shiki-dark-font-style) !important;
-    font-weight: var(--shiki-dark-font-weight) !important;
-    text-decoration: var(--shiki-dark-text-decoration) !important;
-  }
-}
-
 /* 콜아웃 */
 .callout {
   @apply rounded-lg border-l-4 px-4 py-3 my-4 text-[14px] leading-6;
@@ -128,10 +80,3 @@ body {
 .callout.tip     { @apply border-emerald-500 bg-emerald-50 text-emerald-900; }
 .callout.warning { @apply border-amber-500   bg-amber-50   text-amber-900; }
 .callout.success { @apply border-green-500   bg-green-50   text-green-900; }
-
-@media (prefers-color-scheme: dark) {
-  .callout.info    { @apply bg-brand-900/30   text-brand-100; }
-  .callout.tip     { @apply bg-emerald-900/30 text-emerald-100; }
-  .callout.warning { @apply bg-amber-900/30   text-amber-100; }
-  .callout.success { @apply bg-green-900/30   text-green-100; }
-}
