@@ -57,12 +57,13 @@ body {
 .code-block__body pre,
 .code-block__body .shiki {
   @apply m-0 p-4 text-[13px] leading-6;
-  background: #ffffff !important;
+  background: var(--shiki-light-bg, #ffffff) !important;
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
     "Liberation Mono", monospace;
 }
-.code-block__body code {
-  background: transparent;
+.code-block__body code,
+.code-block__body .shiki span {
+  background: transparent !important;
 }
 
 /* 복사 버튼 */
@@ -98,7 +99,7 @@ body {
   }
   .code-block__body pre,
   .code-block__body .shiki {
-    background: #0d1117 !important;
+    background: var(--shiki-dark-bg, #0d1117) !important;
   }
   .code-copy-btn {
     color: #9198a1;
@@ -113,7 +114,6 @@ body {
   .shiki,
   .shiki span {
     color: var(--shiki-dark) !important;
-    background-color: var(--shiki-dark-bg) !important;
     font-style: var(--shiki-dark-font-style) !important;
     font-weight: var(--shiki-dark-font-weight) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
