@@ -1,18 +1,31 @@
 import type { CodeBlock as CodeBlockType } from "@/content/types";
+import { getHighlighter, normalizeLang } from "@/lib/shiki";
+import { CopyButton } from "./CopyButton";
 
-export function CodeBlock({ block }: { block: CodeBlockType }) {
+export async function CodeBlock({ block }: { block: CodeBlockType }) {
+  const lang = normalizeLang(block.lang);
+  const highlighter = await getHighlighter();
+  const html = highlighter.codeToHtml(block.code, {
+    lang,
+    themes: { light: "github-light", dark: "github-dark" },
+    defaultColor: false,
+  });
+
+  const displayLang = block.lang || "text";
+
   return (
-    <div className="code-block my-4">
-      {block.filename && (
-        <div className="filename">
-          <span className="opacity-60">{block.lang}</span>
-          {" · "}
-          {block.filename}
-        </div>
-      )}
-      <pre>
-        <code className={`language-${block.lang}`}>{block.code}</code>
-      </pre>
-    </div>
+    <figure className="code-block my-4">
+      <figcaption className="code-block__head">
+        <span className="code-block__lang">{displayLang}</span>
+        {block.filename && (
+          <span className="code-block__filename">{block.filename}</span>
+        )}
+        <CopyButton code={block.code} />
+      </figcaption>
+      <div
+        className="code-block__body"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+    </figure>
   );
 }

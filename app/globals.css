@@ -30,15 +30,94 @@ body {
   @apply leading-7 text-[15px];
 }
 
-/* 코드 블록 스타일 */
+/* GitHub-style 코드 블록 */
 .code-block {
-  @apply bg-ink-900 text-ink-50 rounded-lg overflow-hidden border border-ink-800;
+  @apply my-4 overflow-hidden rounded-lg border;
+  border-color: #d1d9e0;
+  background: #ffffff;
 }
-.code-block pre {
-  @apply m-0 p-4 text-[13px] leading-6 overflow-x-auto;
+.code-block__head {
+  @apply flex items-center gap-2 px-3 py-2 border-b font-mono text-[12px];
+  border-color: #d1d9e0;
+  background: #f6f8fa;
+  color: #59636e;
 }
-.code-block .filename {
-  @apply text-xs px-4 py-2 border-b border-ink-800 text-ink-300 bg-ink-800/40 font-mono;
+.code-block__lang {
+  @apply rounded px-1.5 py-0.5 text-[11px] font-medium uppercase tracking-wide;
+  background: #eaeef2;
+  color: #59636e;
+}
+.code-block__filename {
+  @apply truncate;
+  color: #1f2328;
+}
+.code-block__body {
+  @apply overflow-x-auto;
+}
+.code-block__body pre,
+.code-block__body .shiki {
+  @apply m-0 p-4 text-[13px] leading-6;
+  background: #ffffff !important;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+.code-block__body code {
+  background: transparent;
+}
+
+/* 복사 버튼 */
+.code-copy-btn {
+  @apply ml-auto inline-flex h-7 w-7 items-center justify-center rounded-md transition;
+  color: #59636e;
+}
+.code-copy-btn:hover {
+  background: #eaeef2;
+  color: #1f2328;
+}
+.code-copy-btn[data-copied] {
+  color: #1a7f37;
+}
+
+/* shiki dual-theme: prefers-color-scheme 기반으로 다크 색상 전환 */
+@media (prefers-color-scheme: dark) {
+  .code-block {
+    border-color: #3d444d;
+    background: #0d1117;
+  }
+  .code-block__head {
+    border-color: #3d444d;
+    background: #151b23;
+    color: #9198a1;
+  }
+  .code-block__lang {
+    background: #262c36;
+    color: #9198a1;
+  }
+  .code-block__filename {
+    color: #f0f6fc;
+  }
+  .code-block__body pre,
+  .code-block__body .shiki {
+    background: #0d1117 !important;
+  }
+  .code-copy-btn {
+    color: #9198a1;
+  }
+  .code-copy-btn:hover {
+    background: #262c36;
+    color: #f0f6fc;
+  }
+  .code-copy-btn[data-copied] {
+    color: #3fb950;
+  }
+  .shiki,
+  .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
 }
 
 /* 콜아웃 */
