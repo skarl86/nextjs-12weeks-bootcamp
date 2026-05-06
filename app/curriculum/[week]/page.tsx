@@ -53,35 +53,37 @@ export default async function WeekPage({
 
       <article className="min-w-0 flex-1">
         {/* 헤더 */}
-        <header className="border-b border-ink-100 pb-6 mb-6">
+        <header className="border-b border-ink-100 pb-6 mb-6 dark:border-ink-800">
           <div className="mb-3 flex items-center gap-2 text-xs">
-            <span className="rounded-full bg-ink-900 px-2.5 py-0.5 font-mono text-white">
+            <span className="rounded-full bg-ink-900 px-2.5 py-0.5 font-mono text-white dark:bg-ink-700">
               Week {String(w.number).padStart(2, "0")}
             </span>
             <span
               className={`rounded-full px-2.5 py-0.5 font-medium ${
                 w.level === "기초"
-                  ? "bg-emerald-50 text-emerald-700"
+                  ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-200"
                   : w.level === "중급"
-                  ? "bg-brand-50 text-brand-700"
-                  : "bg-amber-50 text-amber-700"
+                  ? "bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-200"
+                  : "bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-200"
               }`}
             >
               {w.level}
             </span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink-900">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink-900 dark:text-ink-50">
             {w.title}
           </h1>
-          <p className="mt-3 text-[16px] leading-7 text-ink-600">{w.summary}</p>
+          <p className="mt-3 text-[16px] leading-7 text-ink-600 dark:text-ink-300">
+            {w.summary}
+          </p>
         </header>
 
         {/* 학습 목표 */}
-        <section className="mb-8 rounded-xl border border-emerald-100 bg-emerald-50/50 p-5">
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-emerald-700">
+        <section className="mb-8 rounded-xl border border-emerald-100 bg-emerald-50/50 p-5 dark:border-emerald-900/40 dark:bg-emerald-900/15">
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
             학습 목표
           </h2>
-          <ul className="space-y-1.5 text-[15px] leading-7 text-emerald-900">
+          <ul className="space-y-1.5 text-[15px] leading-7 text-emerald-900 dark:text-emerald-100">
             {w.objectives.map((o, i) => (
               <li key={i} className="flex gap-2">
                 <span aria-hidden>✓</span>
@@ -94,7 +96,7 @@ export default async function WeekPage({
         {/* 본문 섹션들 */}
         {w.sections.map((sec) => (
           <section key={sec.id} id={sec.id} className="mb-10 scroll-mt-24">
-            <h2 className="mb-3 text-2xl font-bold text-ink-900">
+            <h2 className="mb-3 text-2xl font-bold text-ink-900 dark:text-ink-50">
               {sec.title}
             </h2>
             {sec.blocks.map((b, i) => (
@@ -104,9 +106,11 @@ export default async function WeekPage({
         ))}
 
         {/* 연습 과제 */}
-        <section className="mb-10 rounded-xl border border-brand-100 bg-brand-50/40 p-5">
-          <h2 className="mb-3 text-lg font-bold text-brand-900">📝 연습 과제</h2>
-          <ol className="ml-5 list-decimal space-y-2 text-[15px] leading-7 text-brand-900">
+        <section className="mb-10 rounded-xl border border-brand-100 bg-brand-50/40 p-5 dark:border-brand-900/40 dark:bg-brand-900/15">
+          <h2 className="mb-3 text-lg font-bold text-brand-900 dark:text-brand-200">
+            📝 연습 과제
+          </h2>
+          <ol className="ml-5 list-decimal space-y-2 text-[15px] leading-7 text-brand-900 dark:text-brand-100">
             {w.exercises.map((ex, i) => (
               <li key={i}>{ex}</li>
             ))}
@@ -115,7 +119,9 @@ export default async function WeekPage({
 
         {/* 참고 링크 */}
         <section className="mb-10">
-          <h2 className="mb-3 text-lg font-bold text-ink-900">🔗 참고 자료</h2>
+          <h2 className="mb-3 text-lg font-bold text-ink-900 dark:text-ink-50">
+            🔗 참고 자료
+          </h2>
           <ul className="space-y-1.5 text-[15px]">
             {w.references.map((r) => (
               <li key={r.url}>
@@ -123,7 +129,7 @@ export default async function WeekPage({
                   href={r.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-brand-600 underline-offset-2 hover:underline"
+                  className="text-brand-600 underline-offset-2 hover:underline dark:text-brand-400"
                 >
                   {r.label} ↗
                 </a>
@@ -133,14 +139,14 @@ export default async function WeekPage({
         </section>
 
         {/* 이전/다음 */}
-        <nav className="grid gap-3 border-t border-ink-100 pt-6 md:grid-cols-2">
+        <nav className="grid gap-3 border-t border-ink-100 pt-6 md:grid-cols-2 dark:border-ink-800">
           {prev ? (
             <Link
               href={`/curriculum/${prev.slug}`}
-              className="block rounded-lg border border-ink-100 p-4 text-left hover:border-brand-300 hover:bg-ink-50"
+              className="block rounded-lg border border-ink-100 p-4 text-left hover:border-brand-300 hover:bg-ink-50 dark:border-ink-800 dark:hover:border-brand-700 dark:hover:bg-ink-800"
             >
-              <p className="text-xs text-ink-500">← 이전</p>
-              <p className="mt-1 font-semibold text-ink-900">
+              <p className="text-xs text-ink-500 dark:text-ink-400">← 이전</p>
+              <p className="mt-1 font-semibold text-ink-900 dark:text-ink-100">
                 Week {String(prev.number).padStart(2, "0")} · {prev.title}
               </p>
             </Link>
@@ -150,20 +156,22 @@ export default async function WeekPage({
           {next ? (
             <Link
               href={`/curriculum/${next.slug}`}
-              className="block rounded-lg border border-ink-100 p-4 text-right hover:border-brand-300 hover:bg-ink-50"
+              className="block rounded-lg border border-ink-100 p-4 text-right hover:border-brand-300 hover:bg-ink-50 dark:border-ink-800 dark:hover:border-brand-700 dark:hover:bg-ink-800"
             >
-              <p className="text-xs text-ink-500">다음 →</p>
-              <p className="mt-1 font-semibold text-ink-900">
+              <p className="text-xs text-ink-500 dark:text-ink-400">다음 →</p>
+              <p className="mt-1 font-semibold text-ink-900 dark:text-ink-100">
                 Week {String(next.number).padStart(2, "0")} · {next.title}
               </p>
             </Link>
           ) : (
             <Link
               href="/"
-              className="block rounded-lg border border-ink-100 p-4 text-right hover:border-brand-300 hover:bg-ink-50"
+              className="block rounded-lg border border-ink-100 p-4 text-right hover:border-brand-300 hover:bg-ink-50 dark:border-ink-800 dark:hover:border-brand-700 dark:hover:bg-ink-800"
             >
-              <p className="text-xs text-ink-500">완주! →</p>
-              <p className="mt-1 font-semibold text-ink-900">홈으로 돌아가기</p>
+              <p className="text-xs text-ink-500 dark:text-ink-400">완주! →</p>
+              <p className="mt-1 font-semibold text-ink-900 dark:text-ink-100">
+                홈으로 돌아가기
+              </p>
             </Link>
           )}
         </nav>

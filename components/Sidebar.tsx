@@ -12,7 +12,7 @@ export function Sidebar({ activeSlug }: { activeSlug?: string }) {
     <aside className="sticky top-20 hidden h-[calc(100vh-6rem)] w-64 shrink-0 overflow-y-auto pr-4 lg:block">
       {(Object.keys(grouped) as (keyof typeof grouped)[]).map((level) => (
         <div key={level} className="mb-5">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-400">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">
             {level}
           </p>
           <ul className="space-y-1">
@@ -24,11 +24,11 @@ export function Sidebar({ activeSlug }: { activeSlug?: string }) {
                     href={`/curriculum/${w.slug}`}
                     className={`flex items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors ${
                       active
-                        ? "bg-brand-50 text-brand-700 font-medium"
-                        : "text-ink-700 hover:bg-ink-50"
+                        ? "bg-brand-50 text-brand-700 font-medium dark:bg-brand-900/30 dark:text-brand-200"
+                        : "text-ink-700 hover:bg-ink-50 dark:text-ink-300 dark:hover:bg-ink-800"
                     }`}
                   >
-                    <span className="inline-flex h-5 w-5 items-center justify-center rounded text-[11px] font-mono bg-ink-900 text-white">
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded text-[11px] font-mono bg-ink-900 text-white dark:bg-ink-700 dark:text-ink-100">
                       {String(w.number).padStart(2, "0")}
                     </span>
                     <span className="truncate">{w.title}</span>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
 import { Nanum_Gothic_Coding } from "next/font/google";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const codeFont = Nanum_Gothic_Coding({
   subsets: ["latin"],
@@ -40,45 +41,62 @@ export const metadata: Metadata = {
   },
 };
 
+const themeBootstrap = `(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark',d);}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={codeFont.variable}>
-      <body className="min-h-screen bg-white text-ink-900 antialiased">
-        <header className="sticky top-0 z-30 border-b border-ink-100 bg-white/80 backdrop-blur">
+    <html lang="ko" className={codeFont.variable} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: themeBootstrap }}
+        />
+      </head>
+      <body className="min-h-screen bg-white text-ink-900 antialiased dark:bg-ink-900 dark:text-ink-50">
+        <header className="sticky top-0 z-30 border-b border-ink-100 bg-white/80 backdrop-blur dark:border-ink-800 dark:bg-ink-900/80">
           <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
             <Link href="/" className="flex items-center gap-2 font-bold">
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-ink-900 text-white">
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-ink-900 text-white dark:bg-white dark:text-ink-900">
                 N
               </span>
               <span>Next.js 부트캠프</span>
             </Link>
             <nav className="flex items-center gap-5 text-sm">
-              <Link href="/" className="hover:text-brand-600">
+              <Link
+                href="/"
+                className="hover:text-brand-600 dark:hover:text-brand-400"
+              >
                 홈
               </Link>
-              <Link href="/curriculum/week-01" className="hover:text-brand-600">
+              <Link
+                href="/curriculum/week-01"
+                className="hover:text-brand-600 dark:hover:text-brand-400"
+              >
                 강의자료
               </Link>
-              <Link href="/about" className="hover:text-brand-600">
+              <Link
+                href="/about"
+                className="hover:text-brand-600 dark:hover:text-brand-400"
+              >
                 안내
               </Link>
               <a
                 href="https://nextjs.org/docs"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-brand-600"
+                className="hover:text-brand-600 dark:hover:text-brand-400"
               >
                 공식 문서 ↗
               </a>
+              <ThemeToggle />
             </nav>
           </div>
         </header>
         <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
-        <footer className="mt-16 border-t border-ink-100 py-8 text-center text-sm text-ink-500">
+        <footer className="mt-16 border-t border-ink-100 py-8 text-center text-sm text-ink-500 dark:border-ink-800 dark:text-ink-400">
           © {new Date().getFullYear()} Next.js 12주 부트캠프 · App Router
           기반 · Built with Next.js & Tailwind CSS
         </footer>

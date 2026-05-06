@@ -23,7 +23,7 @@ body {
   @apply leading-7 text-[15px];
 }
 
-/* GitHub-style 코드 블록 */
+/* GitHub-style 코드 블록 (라이트) */
 .code-block {
   @apply my-4 overflow-hidden rounded-lg border;
   border-color: #d1d9e0;
@@ -52,17 +52,21 @@ body {
   @apply m-0 py-4 text-[13px] leading-6;
   padding-left: 0;
   padding-right: 1rem;
-  background: #ffffff !important;
+  color: var(--shiki-light, #24292e) !important;
+  background: var(--shiki-light-bg, #ffffff) !important;
   font-family: var(--font-code), "D2Coding", "Nanum Gothic Coding",
     ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
     "Liberation Mono", monospace;
 }
-.code-block__body code,
 .code-block__body .shiki span {
+  color: var(--shiki-light) !important;
+  background: transparent !important;
+}
+.code-block__body code {
   background: transparent !important;
 }
 
-/* 라인 번호 (GitHub 스타일 gutter) */
+/* 라인 번호 gutter */
 .code-block__body .shiki code {
   counter-reset: shiki-line;
   display: block;
@@ -96,7 +100,47 @@ body {
   color: #1a7f37;
 }
 
-/* 콜아웃 */
+/* 코드 블록 (다크, .dark 클래스 기반) */
+.dark .code-block {
+  border-color: #3d444d;
+  background: #0d1117;
+}
+.dark .code-block__head {
+  border-color: #3d444d;
+  background: #151b23;
+  color: #9198a1;
+}
+.dark .code-block__lang {
+  background: #262c36;
+  color: #9198a1;
+}
+.dark .code-block__filename {
+  color: #f0f6fc;
+}
+.dark .code-block__body pre,
+.dark .code-block__body .shiki {
+  color: var(--shiki-dark, #e1e4e8) !important;
+  background: var(--shiki-dark-bg, #24292e) !important;
+}
+.dark .code-block__body .shiki span {
+  color: var(--shiki-dark) !important;
+}
+.dark .code-block__body .shiki .line::before {
+  color: #6e7681;
+  border-right-color: #30363d;
+}
+.dark .code-copy-btn {
+  color: #9198a1;
+}
+.dark .code-copy-btn:hover {
+  background: #262c36;
+  color: #f0f6fc;
+}
+.dark .code-copy-btn[data-copied] {
+  color: #3fb950;
+}
+
+/* 콜아웃 (라이트) */
 .callout {
   @apply rounded-lg border-l-4 px-4 py-3 my-4 text-[14px] leading-6;
 }
@@ -104,3 +148,35 @@ body {
 .callout.tip     { @apply border-emerald-500 bg-emerald-50 text-emerald-900; }
 .callout.warning { @apply border-amber-500   bg-amber-50   text-amber-900; }
 .callout.success { @apply border-green-500   bg-green-50   text-green-900; }
+
+/* 콜아웃 (다크) */
+.dark .callout.info    { @apply bg-brand-900/30   text-brand-100; }
+.dark .callout.tip     { @apply bg-emerald-900/30 text-emerald-100; }
+.dark .callout.warning { @apply bg-amber-900/30   text-amber-100; }
+.dark .callout.success { @apply bg-green-900/30   text-green-100; }
+
+/* 테마 토글 버튼 */
+.theme-toggle {
+  @apply inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors;
+  color: #59636e;
+}
+.theme-toggle:hover {
+  background: #f6f8fa;
+  color: #1f2328;
+}
+.dark .theme-toggle {
+  color: #9198a1;
+}
+.dark .theme-toggle:hover {
+  background: #262c36;
+  color: #f0f6fc;
+}
+.theme-toggle__icon--moon {
+  display: none;
+}
+.dark .theme-toggle__icon--sun {
+  display: none;
+}
+.dark .theme-toggle__icon--moon {
+  display: inline-block;
+}
