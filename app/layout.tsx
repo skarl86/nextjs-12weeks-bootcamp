@@ -1,0 +1,80 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://nextjs-bootcamp.vercel.app"),
+  title: {
+    default: "Next.js 12주 부트캠프",
+    template: "%s | Next.js 12주 부트캠프",
+  },
+  description:
+    "React 경험자를 위한 Next.js App Router 12주 부트캠프 커리큘럼과 강의자료. 공식 문서를 토대로 기초부터 어드밴스 스킬까지.",
+  keywords: [
+    "Next.js",
+    "App Router",
+    "React Server Components",
+    "프런트엔드 부트캠프",
+    "강의자료",
+    "커리큘럼",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    title: "Next.js 12주 부트캠프",
+    description: "App Router 기준 풀 코스 강의자료",
+    images: ["/api/og?title=Next.js 12주 부트캠프"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Next.js 12주 부트캠프",
+    description: "App Router 기준 풀 코스 강의자료",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="ko">
+      <body className="min-h-screen bg-white text-ink-900 antialiased">
+        <header className="sticky top-0 z-30 border-b border-ink-100 bg-white/80 backdrop-blur">
+          <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
+            <Link href="/" className="flex items-center gap-2 font-bold">
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-ink-900 text-white">
+                N
+              </span>
+              <span>Next.js 부트캠프</span>
+            </Link>
+            <nav className="flex items-center gap-5 text-sm">
+              <Link href="/" className="hover:text-brand-600">
+                홈
+              </Link>
+              <Link href="/curriculum/week-01" className="hover:text-brand-600">
+                강의자료
+              </Link>
+              <Link href="/about" className="hover:text-brand-600">
+                안내
+              </Link>
+              <a
+                href="https://nextjs.org/docs"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-brand-600"
+              >
+                공식 문서 ↗
+              </a>
+            </nav>
+          </div>
+        </header>
+        <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
+        <footer className="mt-16 border-t border-ink-100 py-8 text-center text-sm text-ink-500">
+          © {new Date().getFullYear()} Next.js 12주 부트캠프 · App Router
+          기반 · Built with Next.js & Tailwind CSS
+        </footer>
+      </body>
+    </html>
+  );
+}

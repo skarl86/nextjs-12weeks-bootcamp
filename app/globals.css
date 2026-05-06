@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0d14;
+    --foreground: #e6e8ef;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-feature-settings: "ss01", "ss02";
+}
+
+/* Markdown / 본문 텍스트 기본 톤 */
+.prose-ko p {
+  @apply leading-7 text-[15px];
+}
+
+/* 코드 블록 스타일 */
+.code-block {
+  @apply bg-ink-900 text-ink-50 rounded-lg overflow-hidden border border-ink-800;
+}
+.code-block pre {
+  @apply m-0 p-4 text-[13px] leading-6 overflow-x-auto;
+}
+.code-block .filename {
+  @apply text-xs px-4 py-2 border-b border-ink-800 text-ink-300 bg-ink-800/40 font-mono;
+}
+
+/* 콜아웃 */
+.callout {
+  @apply rounded-lg border-l-4 px-4 py-3 my-4 text-[14px] leading-6;
+}
+.callout.info    { @apply border-brand-500   bg-brand-50   text-brand-900; }
+.callout.tip     { @apply border-emerald-500 bg-emerald-50 text-emerald-900; }
+.callout.warning { @apply border-amber-500   bg-amber-50   text-amber-900; }
+.callout.success { @apply border-green-500   bg-green-50   text-green-900; }
+
+@media (prefers-color-scheme: dark) {
+  .callout.info    { @apply bg-brand-900/30   text-brand-100; }
+  .callout.tip     { @apply bg-emerald-900/30 text-emerald-100; }
+  .callout.warning { @apply bg-amber-900/30   text-amber-100; }
+  .callout.success { @apply bg-green-900/30   text-green-100; }
+}
